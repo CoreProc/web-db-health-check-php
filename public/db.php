@@ -1,9 +1,9 @@
 <?php
 
-// Turn off PHP warning if we can't connect to the database server
-error_reporting(E_ERROR | E_PARSE);
-
 require '../vendor/autoload.php';
+
+// set custom error handler for ALL erros
+set_error_handler("customError", E_ALL);
 
 $dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
 $dotenv->load();
@@ -13,22 +13,7 @@ $dbDatabase = getenv('DB_DATABASE');
 $dbUsername = getenv('DB_USERNAME');
 $dbPassword = getenv('DB_PASSWORD');
 
-$response = new \Symfony\Component\HttpFoundation\Response();
-
-// We set headers so it definitely does not cache
-$response->headers->set('Cache-Control', [
-    'no-store',
-    'no-cache',
-    'must-revalidate',
-    'max-age=0',
-]);
-$response->headers->set('Cache-Control', [
-    'post-check=0',
-    'pre-check=0',
-], false);
-$response->headers->set('Pragma', [
-    'no-cache',
-]);
+$response = \Coreproc\HealthChecks\UncacheableResponse::create();
 
 // Create connection
 $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbDatabase);

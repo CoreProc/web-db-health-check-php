@@ -9,6 +9,14 @@
         "phpunit/phpunit": "4.*",
         "scrutinizer/ocular": "~1.1"
     },
+    "autoload": {
+        "files": [
+            "src/Support/helpers.php"
+        ],
+        "psr-4": {
+            "Coreproc\\HealthChecks\\": "src"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
