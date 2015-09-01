@@ -5,7 +5,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 require '../vendor/autoload.php';
 
-$dotenv = new Dotenv\Dotenv(__DIR__ . '../');
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
 $dotenv->load();
 
 $dbHost = getenv('DB_HOST');
