@@ -3,7 +3,7 @@
 // Turn off PHP warning if we can't connect to the database server
 error_reporting(E_ERROR | E_PARSE);
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
